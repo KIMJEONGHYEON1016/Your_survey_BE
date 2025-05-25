@@ -3,9 +3,9 @@ server:
 
 spring:
   datasource:
-    url: jdbc:oracle:thin:@//localhost:1521/XE
-    username: survey
-    password: oracle
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
     driver-class-name: oracle.jdbc.OracleDriver
 
   jpa:
@@ -15,7 +15,6 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.OracleDialect
 
-# ✅ CORS 허용 오리진 설정
 cors:
   allow:
-    origins: http://localhost:3000
+    origins: ${FRONTEND_ORIGIN}
