@@ -50,12 +50,3 @@ dependencies {
 tasks.named('test') {
     useJUnitPlatform()
 }
-
-bootJar {
-    enabled = true
-    archiveFileName = 'your-survey-backend.jar' // 실행 JAR 이름 고정
-}
-
-jar {
-    enabled = false // plain JAR 생성 방지
-}
