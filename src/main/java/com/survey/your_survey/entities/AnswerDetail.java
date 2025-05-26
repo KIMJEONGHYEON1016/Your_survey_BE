@@ -2,7 +2,10 @@ package com.survey.your_survey.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Data
@@ -17,18 +20,20 @@ import lombok.*;
 public class AnswerDetail {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "answer_detail_seq")
-    @SequenceGenerator(name = "answer_detail_seq", sequenceName = "answer_detail_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    /** 어떤 질문에 대한 응답인지 */
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "question_id", nullable = false)
     private Question question;
 
+    /** 어떤 사람의 응답인지 */
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "answer_id", nullable = false)
     private Answer answer;
 
+    /** 사용자의 응답 내용 */
     @Column(nullable = false)
     private String response;
 }
